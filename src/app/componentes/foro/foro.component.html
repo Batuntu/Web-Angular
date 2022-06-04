@@ -3,59 +3,32 @@
     <app-navbar></app-navbar>
 
     <!-- Categorias -->
-    <section id = "foroSection1">
-        <!-- <nav>
-            <ul class="ulCategorias">
-                <li><a href="foro.html">MATEMÁTICAS</a></li>
-                <li><a href="foro.html">LITERARUTA</a></li>
-                <li><a href="foro.html">QUÍMICA</a></li>
-                <li><a href="foro.html">HISTORIA</a></li>
-                <li><a href="foro.html">BIOLOGÍA</a></li>
-                <li><a href="foro.html">INGLES</a></li>
-                <li><a href="foro.html">ALGEBRA</a></li>
-                <li><a href="foro.html">OTROS</a></li>
-            </ul>
-        </nav> -->
-
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4276e7">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#"></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav navbar-custom mx-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">MATEMÁTICAS</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">LITERATURA</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">QUÍMICA</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">HISTORIA</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">BIOLOGÍA</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">INGLES</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">ALGEBRA</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">OTROS</a>
-                  </li>
-                  
-                </ul>
-              </div>
-            </div>
-          </nav>
-
-    </section>
+    <ul ngbNav [(activeId)]="activeId" class="nav-tabs justify-content-center">
+      <li [ngbNavItem]="1">
+        <a ngbNavLink>MATEMÁTICAS</a>
+      </li>
+      <li [ngbNavItem]="2">
+        <a ngbNavLink>LITERATURA</a>
+      </li>
+      <li [ngbNavItem]="3">
+        <a ngbNavLink>QUÍMICA</a>
+      </li>
+      <li [ngbNavItem]="4">
+        <a ngbNavLink>HISTORIA</a>
+      </li>
+      <li [ngbNavItem]="5">
+        <a ngbNavLink>BIOLOGÍA</a>
+      </li>
+      <li [ngbNavItem]="6">
+        <a ngbNavLink>INGLES</a>
+      </li>
+      <li [ngbNavItem]="7">
+        <a ngbNavLink>ALGEBRA</a>
+      </li>
+      <li [ngbNavItem]="8">
+        <a ngbNavLink>OTROS</a>
+      </li>
+    </ul>
 
     <section id = "foroSection2">
 
@@ -73,42 +46,116 @@
                 </div>
             </nav>
     
-
-            <div id="foros" class="container">
-                <div class="row row-cols-1">
-                    <div class="borde col" >
-                        <h1> <a href="#">Pregunta </a></h1>
-                        <p class="text-center">Descripcion de la Pregunta</p>
-                    </div>
-
-                    <div class="borde col" >
-                        <h1> <a href="#">Pregunta </a></h1>
-                        <p class="text-center">Descripcion de la Pregunta</p>
-                    </div>
-                    <div class="borde col">
-                        <h1> <a href="#" >Pregunta </a></h1>
-                        <p class="text-center"> Descripcion de la Pregunta</p>
-                    </div>
-                    <div class="borde col">
-                        <h1> <a href="#">Pregunta </a></h1>
-                        <p class="text-center"> Descripcion de la Pregunta</p>
-                    </div>
-                    <div class="borde col">
-                        <h1> <a href="#">Pregunta </a></h1>
-                        <p class="text-center">Descripcion de la Pregunta</p>
-                    </div>
-                    
+            <div *ngIf="activeId==1">
+              <li *ngFor="let item of matematica">
+                <div id="foros" class="container">
+                  <div class="row row-cols-1 gy-3">
+                      <div class="borde col" >
+                          <h1> <a href="#">{{item.pregunta}} </a></h1>
+                          <p class="text-center">{{item.descripcion}}</p>
+                      </div>  
+                  </div>
                 </div>
-              </div>
+              </li>
+            </div>
+
+            <div *ngIf="activeId==2">
+              <li *ngFor="let item of literatura">
+                <div id="foros" class="container">
+                  <div class="row row-cols-1 gy-3">
+                      <div class="borde col" >
+                          <h1> <a href="#">{{item.pregunta}} </a></h1>
+                          <p class="text-center">{{item.descripcion}}</p>
+                      </div>  
+                  </div>
+                </div>
+              </li>
+            </div>
+
+            <div *ngIf="activeId==3">
+              <li *ngFor="let item of quimica">
+                <div id="foros" class="container">
+                  <div class="row row-cols-1 gy-3">
+                      <div class="borde col" >
+                          <h1> <a href="#">{{item.pregunta}} </a></h1>
+                          <p class="text-center">{{item.descripcion}}</p>
+                      </div>  
+                  </div>
+                </div>
+              </li>
+            </div>
+
+            <div *ngIf="activeId==4">
+              <li *ngFor="let item of historia">
+                <div id="foros" class="container">
+                  <div class="row row-cols-1 gy-3">
+                      <div class="borde col" >
+                          <h1> <a href="#">{{item.pregunta}} </a></h1>
+                          <p class="text-center">{{item.descripcion}}</p>
+                      </div>  
+                  </div>
+                </div>
+              </li>
+            </div>
+
+            <div *ngIf="activeId==5">
+              <li *ngFor="let item of biologia">
+                <div id="foros" class="container">
+                  <div class="row row-cols-1 gy-3">
+                      <div class="borde col" >
+                          <h1> <a href="#">{{item.pregunta}} </a></h1>
+                          <p class="text-center">{{item.descripcion}}</p>
+                      </div>  
+                  </div>
+                </div>
+              </li>
+            </div>
+
+            <div *ngIf="activeId==6">
+              <li *ngFor="let item of ingles">
+                <div id="foros" class="container">
+                  <div class="row row-cols-1 gy-3">
+                      <div class="borde col" >
+                          <h1> <a href="#">{{item.pregunta}} </a></h1>
+                          <p class="text-center">{{item.descripcion}}</p>
+                      </div>  
+                  </div>
+                </div>
+              </li>
+            </div>
+
+            <div *ngIf="activeId==7">
+              <li *ngFor="let item of algebra">
+                <div id="foros" class="container">
+                  <div class="row row-cols-1 gy-3">
+                      <div class="borde col" >
+                          <h1> <a href="#">{{item.pregunta}} </a></h1>
+                          <p class="text-center">{{item.descripcion}}</p>
+                      </div>  
+                  </div>
+                </div>
+              </li>
+            </div>
+
+            <div *ngIf="activeId==8">
+              <li *ngFor="let item of otros">
+                <div id="foros" class="container">
+                  <div class="row row-cols-1 gy-3">
+                      <div class="borde col" >
+                          <h1> <a href="#">{{item.pregunta}} </a></h1>
+                          <p class="text-center">{{item.descripcion}}</p>
+                      </div>  
+                  </div>
+                </div>
+              </li>
+            </div>
 
         </div>
-            
-
     </section>
 
     <footer>
         <p>&copy; Derechos reservados LGM</p>
-        <ul class="pie">
+        <ul class="pie" align="right">
             <li><a href="https://twitter.com/">Twitter</a></li>
             <li><a href="https://www.instagram.com/">Instagram</a></li>
             <li><a href="">Whatsapp</a></li>

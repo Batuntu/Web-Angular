@@ -57,6 +57,10 @@
     @include media-up(lg){
         transform: scale(1);
     }
+
+    li{
+        list-style-type: none;
+    }
 }
 
 .borde{
@@ -95,4 +99,8 @@
         }
         
     }
+}
+
+.nav-tabs{
+    padding-top: 0.5%;
 }
