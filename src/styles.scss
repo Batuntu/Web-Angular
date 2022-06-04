@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap" rel="stylesheet');
 
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
 body{
     margin: 0px;
 }
@@ -22,6 +25,7 @@ $breakpoints: (
 );
 
 footer{
+
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 10%;
@@ -36,9 +40,12 @@ footer{
 
 .pie {
     li{
-        float: right;
-        display: flex;
-        flex-direction: row;
-        padding-left: 0.1%;
+        display:inline;
+        flex-wrap: wrap;
+        list-style-type: none;
+        
+        // float: right;
+        // flex-direction: row;
+        padding-left: 0.3%;
     }
 }
