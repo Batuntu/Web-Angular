@@ -10,7 +10,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Error con bootstrap
 
-Al principio puede dar error al iniciar con ng serve ya que no se instala automaticamente bootstrap, como por ejemplo: ngbNavItem, ngIf, etc. Para arreglar esto se debe ejecutar el comando "ng add @ng-bootstrap/ng-bootstrap".
+Al principio puede dar error al iniciar con ng serve ya que no se instala automaticamente bootstrap, errores de codigo como por ejemplo: ngbNavItem, ngIf, etc. Para arreglar esto se debe ejecutar el comando "ng add @ng-bootstrap/ng-bootstrap".
 
 ## Development server
 
