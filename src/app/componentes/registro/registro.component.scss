@@ -1,0 +1,55 @@
+@import "../../../styles.scss";
+
+html,
+main {
+  height: 100%;
+}
+
+main {
+    display: flex;
+    padding-bottom: 200px;
+}
+form ul {
+    list-style-type: none;
+}
+
+#titulo {
+    color: $vColorBackground;
+}
+
+#idRecuerdame{
+    color:$vColorBackground
+}
+
+.panel{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    background-color: rgba(61, 153, 206,0.8);
+    border-radius: 10px;
+}
+
+.form-signin {
+    font-family: 'Inter', sans-serif;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+#extraOptions {
+    color: $vColorMain2;
+}
+p a{
+    text-decoration: none;
+    color:$vColorBackground
+}
+p a:hover {
+    color:$vColorMain2;
+    text-decoration:underline;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
