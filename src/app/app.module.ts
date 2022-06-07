@@ -19,7 +19,16 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { SoporteComponent } from './componentes/soporte/soporte.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {  MatInputModule  } from '@angular/material/input';
+
+//Import sin usar, se pueden usar a futuro
+// import {MatIconModule} from '@angular/material/icon';
+
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -40,7 +49,15 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
     MatSliderModule,
     MatSlideToggleModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDialogModule,
+
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
