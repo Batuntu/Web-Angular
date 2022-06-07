@@ -2,59 +2,97 @@
     <app-encabezado></app-encabezado>
     <app-navbar></app-navbar>
 
-    <div class="me-xl-3 pt-3 px-3 pt-xl-5 px-xl-5 text-center overflow-hidden" style="background-image: url('../../../assets/imagenes/universitarios1.png'); background-repeat: no-repeat; background-size: cover ;height: 110vh;">
-        <main class="text-center">
+    <div id="fondo "class="pt-3 px-s pt-xl-5 px-xl-5 text-center" style="background-image: url('../../../assets/imagenes/universitarios1.png'); background-repeat: no-repeat; background-size: cover;">
+
+        <main>
             <div class="panel">
 
-                <form class="row g-3 needs-validation" novalidate>
+                <form [formGroup]="formularioRegistro" (ngSubmit)="onSubmit()" novalidate> 
 
                     <h1 id="titulo" class="h3 mb-3 fw-normal">Registro</h1>
 
-                    <div class="form-floating ">
-                        <input type="text" class="form-control" id="floatingInput" required placeholder="Nombre">
-                        <label for="floatingInput" class="text-center">Nombre Completo</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">*Este campo es obligatorio</div>
-                    </div>
+                    <!-- INPUT NOMBRE -->
 
-                    <div class="form-floating ">
-                        <input type="EMAI" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                        <label for="floatingInput" class="text-center">Correo Electrónico</label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">*Ingrese un email valido</div>
-                    </div>
+                    <mat-form-field appearance="fill">
+                        <!-- input -->
+                        <mat-label>Nombre Completo</mat-label>
+                        <input matInput formControlName="nombre">
+                        <!-- Validacion -->
+                            <mat-error *ngIf="formularioRegistro.controls['nombre'].invalid && (formularioRegistro.controls['nombre'].dirty || formularioRegistro.controls['nombre'].touched)">
+                                <mat-hint *ngIf="formularioRegistro.controls['nombre'].hasError('required')">Este campo es obligatorio</mat-hint>
+                                <mat-hint *ngIf="formularioRegistro.controls['nombre'].hasError('maxlength')">Tamaño máximo 40 caracteres.</mat-hint>  
+                            </mat-error>  
+                    </mat-form-field>
 
-                    <div class="form-floating" >
-                        <input type="text" class="form-control" id="floatingPassword" placeholder="12345678-k" pattern="\d{3,8}-[\d|kK]{1}" required>
-                        <label for="floatingPassword">RUT</label>
-                        <div class="invalid-feedback">*Formato: 12345678-k</div>
-                    </div>
+                    <!-- INPUT CORREO -->
 
-                    <div class="form-floating" >
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
-                        <label for="floatingPassword">Contraseña</label>
-                        <div class="invalid-feedback">*Este campo es obligatorio</div>
-                    </div>
-    
-                    <div class="form-floating" required>
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
-                        <label for="floatingPassword">Repetir contraseña</label>
-                        <div class="invalid-feedback">*Las contraseñas deben ser iguales</div>
-                    </div>
-    
-                    <!-- <div class="checkbox mb-3">
-                        <label id="idRecuerdame">
-                            <input type="checkbox" value="remember-me"> Recordarme
-                        </label>
+                    <mat-form-field appearance="fill">
+                        <!-- input -->
+                        <mat-label>Correo Electrónico</mat-label>
+                        <input matInput formControlName="email">
+                        <!-- Validacion -->
+                            <mat-error *ngIf="formularioRegistro.controls['email'].invalid && (formularioRegistro.controls['email'].dirty || formularioRegistro.controls['email'].touched)">
+                                <mat-hint *ngIf="formularioRegistro.controls['email'].hasError('required')">Este campo es obligatorio</mat-hint>
+                                <mat-hint *ngIf="(formularioRegistro.controls['email'].dirty || formularioRegistro.controls['email'].touched) && formularioRegistro.controls['email'].invalid && !formularioRegistro.controls['email'].hasError('required')">Ingrese un correo electrónico valido.</mat-hint>
+                            </mat-error>  
+                    </mat-form-field>
+
+                    <!-- INPUT RUT -->
+
+                    <mat-form-field appearance="fill">
+                        <!-- input -->
+                        <mat-label>RUT</mat-label>
+                        <input matInput formControlName="rut">
+                        <!-- Validacion -->
+                        <mat-error *ngIf="formularioRegistro.controls['rut'].invalid && (formularioRegistro.controls['rut'].dirty || formularioRegistro.controls['rut'].touched)">
+                            <mat-hint *ngIf="formularioRegistro.controls['rut'].hasError('required')">Este campo es obligatorio</mat-hint>
+                            <mat-hint *ngIf="(formularioRegistro.controls['rut'].dirty || formularioRegistro.controls['rut'].touched) && formularioRegistro.controls['rut'].invalid && !formularioRegistro.controls['rut'].hasError('required')">Ingrese un RUT valido<br> Formato: 12.345.678-9</mat-hint>
+                        </mat-error>  
+                    </mat-form-field>
+                    
+                    <!-- INPUT CLAVE -->
+
+                    <mat-form-field appearance="fill">
+                        <!-- input -->
+                        <mat-label>Clave</mat-label>
+                        <input type="password" matInput formControlName="clave" >
+                        <!-- Validacion -->
+                            <mat-error *ngIf="formularioRegistro.controls['clave'].invalid && (formularioRegistro.controls['clave'].dirty || formularioRegistro.controls['clave'].touched)">
+                                <mat-hint *ngIf="formularioRegistro.controls['clave'].hasError('required')">Este campo es obligatorio</mat-hint>
+                                <mat-hint  *ngIf="formularioRegistro.controls['clave'].hasError('maxlength') || formularioRegistro.controls['clave'].hasError('minlength')">La contraseña debe tener de 4 a 20 caracteres.</mat-hint>  
+                            </mat-error>  
+                    </mat-form-field>
+
+                    <!-- INPUT REPETIR CLAVE -->
+
+                    <mat-form-field appearance="fill">
+                        <!-- input -->
+                        <mat-label>Repetir clave</mat-label>
+                        <input type="password" matInput formControlName="claveRepetida" >
+                        <!-- Validacion -->
+                            <mat-error *ngIf="formularioRegistro.controls['claveRepetida'].invalid && (formularioRegistro.controls['claveRepetida'].dirty || formularioRegistro.controls['claveRepetida'].touched)">
+                                <mat-hint *ngIf="formularioRegistro.controls['claveRepetida'].hasError('required')">Este campo es obligatorio</mat-hint>
+                            </mat-error>  
+                    </mat-form-field>
+                    <br>
+
+                    <!-- Boton enviar formulario -->
+                    
+                    <button id="botonRegistro" bmat-raised-button [disabled]="!formularioRegistro.valid" color="primary" type="submit">Registrarse</button>
+
+                    <!-- dialogo usuario registrado -->
+                    <!-- 
+                    <div *ngIf="usuarioRegistrado == true">
                     </div> -->
 
-                    <!-- <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button> -->
-                    <button class="btn btn-primary" type="submit">Registrarse</button>
+                    <!-- Opciones extra -->
+
                     <p id="extraOptions" class="mt-3 mb-3">
                         Ya tengo una cuenta <br/>
                         <a [routerLink]="['/iniciar-sesion']">Iniciar Sesión</a><br/>
                         
                     </p>
+
                 </form>
             </div>
         </main>
