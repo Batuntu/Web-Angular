@@ -2,31 +2,47 @@
     <app-encabezado></app-encabezado>
     <app-navbar></app-navbar>
 
-    <div class="me-xl-3 pt-3 px-3 pt-xl-5 px-xl-5 text-center overflow-hidden" style="background-image: url('../../../assets/imagenes/universitarios1.png'); background-repeat: no-repeat; background-size: cover ;height: 110vh;">
-        <main class="text-center">
+    <div id="fondo "class="pt-3 px-s pt-xl-5 px-xl-5 text-center" style="background-image: url('../../../assets/imagenes/universitarios1.png'); background-repeat: no-repeat; background-size: cover;">
+        <main>
             <div class="panel">
-                <form class="form-signin">
+                <form [formGroup]="formularioIniciarSesion" (ngSubmit)="onSubmit()" novalidate>
                     <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
                     <h1 id="titulo" class="h3 mb-3 fw-normal">Iniciar Sesión</h1>
-    
-                    <div class="form-floating ">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Correo Electrónico</label>
-                    </div>
-                    <div class="form-floating" >
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Contraseña</label>
-                    </div>
-    
+
+                    <!-- INPUT CORREO -->
+
+                    <mat-form-field appearance="fill">
+                        <!-- input -->
+                        <mat-label>Correo Electrónico</mat-label>
+                        <input matInput formControlName="email">
+                        <!-- Validacion -->
+                        <mat-hint *ngIf="formularioIniciarSesion.controls['email'].hasError('required')">Este campo es obligatorio</mat-hint>
+                    </mat-form-field>
+
+                    <!-- INPUT CLAVE -->
+
+                    <mat-form-field appearance="fill">
+                        <!-- input -->
+                        <mat-label>Clave</mat-label>
+                        <input type="password" matInput formControlName="clave" >
+                        <!-- Validacion -->
+                        <mat-hint *ngIf="formularioIniciarSesion.controls['clave'].hasError('required')">Este campo es obligatorio</mat-hint>
+                    </mat-form-field>
+
+                    <!-- CASILLA RECUERDAME -->
+
                     <div class="checkbox mb-3">
-                    <label id="idRecuerdame">
-                        <input type="checkbox" value="remember-me"> Recordarme
-                    </label>
+                        <label id="idRecuerdame">
+                            <input type="checkbox" value="remember-me"> Mantener sesión iniciada
+                        </label>
                     </div>
-                    <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
+
+                    <!-- BOTON ENVIAR FORMULARIO-->
+
+                    <button id="botonRegistro" bmat-raised-button [disabled]="!formularioIniciarSesion.valid" color="primary" type="submit">Ingresar</button>
     
                     <p id="extraOptions" class="mt-3 mb-3">
-                        <a href = "https://es.wikihow.com/recordar-una-contrase%C3%B1a-olvidada">¿Haz olvidado tu contraseña?</a><br/>
+                        <a href = "https://es.wikihow.com/recordar-una-contrase%C3%B1a-olvidada">¿Olvidaste tu contraseña?</a><br/>
                         <a [routerLink]="['/registro']">Crear Cuenta</a><br/>
                         
                     </p>
@@ -34,5 +50,4 @@
             </div>
         </main>
     </div>
-    
 </body>
